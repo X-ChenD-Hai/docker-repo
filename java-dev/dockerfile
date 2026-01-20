@@ -1,0 +1,4 @@
+FROM base-dev:latest
+
+USER root
+RUN pacman --noconfirm --verbose -S maven

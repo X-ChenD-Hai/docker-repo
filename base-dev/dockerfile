@@ -1,0 +1,15 @@
+FROM archlinux/archlinux:latest
+
+RUN pacman --noconfirm -Syuu && \
+    pacman --noconfirm -S git zsh fzf nvim stow sudo && \
+    rm -rf /var/cache/pacman/pkg/* /usr/share/man/* /usr/share/locale/* /var/log/* /tmp/* && \
+    useradd -m -G wheel dev && \
+    echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+ADD .dotfiles/ /home/dev/.dotfiles/
+RUN chown -R dev:dev /home/dev/.dotfiles
+USER dev
+RUN cd /home/dev/.dotfiles && stow oh-zsh
+VOLUME /home/dev/workspace
+WORKDIR /home/dev/workspace
+CMD /bin/zsh -l
+
