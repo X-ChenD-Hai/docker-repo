@@ -6,7 +6,7 @@ RUN pacman --noconfirm -Syuu && \
     useradd -m -G wheel dev && \
     echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 ADD .dotfiles/ /home/dev/.dotfiles/
-RUN chown -R dev:dev /home/dev/.dotfiles
+RUN chown -R dev:dev /home/dev/.dotfiles && chsh -s /bin/zsh dev
 USER dev
 RUN cd /home/dev/.dotfiles && stow oh-zsh
 VOLUME /home/dev/workspace

@@ -1,0 +1,12 @@
+FROM base-dev:latest
+
+RUN sudo pacman --noconfirm -Syuu && \
+    sudo pacman --noconfirm --verbose -S nvm && \
+    echo "source /usr/share/nvm/init-nvm.sh" >> $HOME/.config/zsh/config_vue.zsh && \
+    echo 'export PATH="$PATH:$HOME/.yarn/bin"' >> $HOME/.config/zsh/config_vue.zsh && \
+    source /usr/share/nvm/init-nvm.sh && \
+    source /usr/share/nvm/init-nvm.sh && \
+    nvm install stable && \
+    npm install -g yarn && \
+    yarn global add @vue/cli ts-node && \
+    sudo rm -rf /var/cache/pacman/pkg/* /usr/share/man/* /usr/share/locale/* /var/log/* /tmp/*

@@ -1,0 +1,3 @@
+[submodule "base-dev/.dotfiles"]
+	path = base-dev/.dotfiles
+	url = https://github.com/X-ChenD-Hai/.dotfiles.git

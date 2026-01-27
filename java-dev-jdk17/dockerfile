@@ -1,5 +1,6 @@
 FROM base-dev:latest
 
 RUN sudo pacman --noconfirm -Syuu && \
+    sudo pacman --noconfirm --verbose -S  jdk17-openjdk && \
     sudo pacman --noconfirm --verbose -S maven && \
     sudo rm -rf /var/cache/pacman/pkg/* /usr/share/man/* /usr/share/locale/* /var/log/* /tmp/*
